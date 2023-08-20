@@ -212,13 +212,11 @@ def print_receipt():
     for col in range(len(check_item)):
         total = item_count[col] * item_price[col]
         print(check_item[col], "\t\t", item_count[col], "\t\t", item_price[col], "\t\t", total)
-        # sub_total += total
 
     print("\n" + "-" * 50)
     print("Sub Total:\t ", sub_total, "\nDiscount:\t ", total_minus_discount, "\nVAT @ 17.5:\t ", vat)
     print("\n" + "=" * 50)
 
-    # bill_total = sub_total - total_minus_discount + vat
     print("Bill Total:\t ", bill_total, "\nAmount Paid: ", balance, "\nBalance: ", new_balance)
     print("=" * 50)
     print("THANK YOU FOR YOUR PATRONAGE")
