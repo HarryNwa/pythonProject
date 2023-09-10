@@ -1,35 +1,35 @@
-# passes = 0
-# failures = 0
-# for student in range(10):
-#     result = int(input('Enter result (1=pass, 2=fail): '))
-#     if result == 1:
-#         passes = passes + 1
-#     if result == 2:
-#         failures = failures + 1
-#     if result != 1 or 2:
-#         continue
-# else:
-#     failures = failures + 1
-# print('Passed:', passes)
-# print('Failed:', failures)
-# # if passes > 8:
-# #     print('Bonus to instructor')
-#
-#
-# a = b = 7
-# print("a =", a, "\nb =", b)
-#
-#
-# for row in range(10):
-#     for column in range(10):
-#         print('<' if row % 2 == 1 else '>', end='')
-#     print()
-#
-#
-# for row in range(2):
-#     for column in range(7):
-#         print('@' if row % 2 == 1 else "@", end="")
-#     print()
+passes = 0
+failures = 0
+for student in range(10):
+    result = int(input('Enter result (1=pass, 2=fail): '))
+    if result == 1:
+        passes = passes + 1
+    if result == 2:
+        failures = failures + 1
+    if result != 1 or 2:
+        continue
+else:
+    failures = failures + 1
+print('Passed:', passes)
+print('Failed:', failures)
+# if passes > 8:
+#     print('Bonus to instructor')
+
+
+a = b = 7
+print("a =", a, "\nb =", b)
+
+
+for row in range(10):
+    for column in range(10):
+        print('<' if row % 2 == 1 else '>', end='')
+    print()
+
+
+for row in range(2):
+    for column in range(7):
+        print('@' if row % 2 == 1 else "@", end="")
+    print()
 
 
 
@@ -114,27 +114,6 @@ from xmlrpc.client import boolean
 
 
 
-# miles = 0
-# gallons = 0
-# total = 0
-# sumTotal = 0
-# totalMiles = 0
-# totalGallons = 0
-# gallons = float(input("Enter the gallons used: "))
-# miles = float(input("Enter the miles driven: "))
-# while gallons != -25:
-#     totalMiles = totalMiles + miles
-#     totalGallons = totalGallons + gallons
-#     total = total + 1
-#     average = miles / gallons
-#     sumTotal = sumTotal + average
-#     print("The overall average was ", average)
-#     gallons = float(input("Enter the gallons used: "))
-#     miles = float(input("Enter the miles driven: "))
-# sumTotal = sumTotal / total
-# totalCombo = totalMiles / totalGallons
-# print("Combined miles driven is ", totalCombo)
-# print("Total average is ", sumTotal)
 
 
 

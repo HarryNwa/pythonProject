@@ -1,12 +1,3 @@
-# create static variable for item names
-# create another that counts the units bought
-# create another that stores the cost of item
-# collect the name of the cashier
-# create a nested for loop under a new method, and print the table filler
-# loop through the counting variable and display the quantity bought and price
-# sout and collect payment
-# if payment is above total expenses, minus total expenses from payment
-# include pay in the receipt and print with thank you for your patronage
 import re
 from datetime import datetime
 
@@ -29,7 +20,6 @@ vat = 0
 balance = 0
 
 
-# new_balance = 0
 def item_checkout():
     global customer
     try:
@@ -149,10 +139,10 @@ def receipt_print():
         print(check_item[row], "\t\t", item_count[row], "\t\t", item_price[row], "\t\t", total)
         sub_total += total
 
-    actual_discount_and_VAT()
+    actual_discount_and_vat()
 
 
-def actual_discount_and_VAT():
+def actual_discount_and_vat():
     global sub_total
     global bill_total
     global vat

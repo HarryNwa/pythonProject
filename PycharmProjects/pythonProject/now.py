@@ -5,4 +5,3 @@ for v in a:
         c += [v]
 print(c)
 
-
