@@ -1,3 +1,5 @@
+from random import random
+
 from Diary_App.Entry import Entry
 
 class Diary:
@@ -42,6 +44,8 @@ class Diary:
         self.__entries.append(entry)
 
     def generate_entry_id(self):
+        # return "".join([str(random.randint(0, 9)) for num in range(10)])
+
         return len(self.__entries) + 1
 
         # return self.__entries.count(all) + 1
@@ -57,7 +61,7 @@ class Diary:
             if entry.get_entry_id() == id:
                 return entry
 
-        raise ValueError("Entry ID not found")
+            raise ValueError("Entry ID not found")
 
     def update_entry(self, id, title, body):
         entry = self.find_entry_by_id(id)

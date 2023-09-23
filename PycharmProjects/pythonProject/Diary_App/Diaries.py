@@ -2,28 +2,32 @@ import re
 
 from Diary_App.Diary import Diary
 
-
 class Diaries:
-    diaries = []
-    diary = None
+    # diaries = []
+    # diary = None
 
     def __init__(self):
         self.diary = Diary
         self.diaries = []
 
-    def add(self, username, password):
+    def add_user(self, username, password):
         diary = Diary(username, password)
         self.diaries.append(diary)
 
     def find_by_user_name(self, username):
+        # if username in self.diaries:
+        #     return self.diaries[username]
+        # else:
+        #     return None
+
         for self.diary in self.diaries:
-            if self.diary.get_username().equals(username):
+            if self.diary.get_username() == username:
                 return self.diary
             raise ValueError("Username not found")
 
     def delete(self, username, password):
-            diary = Diary(username, password)
-            self.diaries.remove(diary)
+        diary = Diary(username, password)
+        self.diaries.remove(diary)
 
     def validate_username(self, username):
         if username in self.diary == username:
