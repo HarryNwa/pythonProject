@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-
+from menstrual_app import menstruation_Impl
 
 class MainMenstrual:
     def __init__(self):
@@ -17,8 +17,7 @@ class MainMenstrual:
         print("1. Menstrual safe period")
         print("2. Ovulation")
         print("3. Menstrual flow")
-        print("4. Circle Length")
-        print("5. Exit")
+        print("4. Exit")
 
         user_input = input("Enter your choice (1/2/3/4/5): ")
 
@@ -29,8 +28,6 @@ class MainMenstrual:
         elif user_input == '3':
             self.menstrual_flow()
         elif user_input == '4':
-            self.circle_length()
-        elif user_input == '5':
             exit()
         else:
             print("Invalid choice. Please enter a valid option.")
@@ -44,7 +41,7 @@ class MainMenstrual:
 
             try:
                 input_date = datetime.strptime(user_input, "%Y-%m-%d")
-                next_flow_date = input_date + timedelta(days=28)  # Assuming a 28-day menstrual cycle
+                next_flow_date = input_date + timedelta(days=28)
                 print(f"Hi dear, you can expect your next flow on {next_flow_date.strftime('%Y-%m-%d')}")
                 self.welcome_page()
             except ValueError:
@@ -58,7 +55,7 @@ class MainMenstrual:
 
             try:
                 last_period_date = datetime.strptime(user_input, "%Y-%m-%d")
-                ovulation_date = last_period_date + timedelta(days=14)  # Assuming a 28-day menstrual cycle
+                ovulation_date = last_period_date + timedelta(days=14)
                 print(f"Hi dear, your ovulation starts on: {ovulation_date.strftime('%Y-%m-%d')}")
                 self.welcome_page()
             except ValueError:
@@ -74,7 +71,7 @@ class MainMenstrual:
             try:
                 last_period_date = datetime.strptime(user_input, "%Y-%m-%d")
                 start_period = last_period_date + timedelta(days=1)
-                end_period = last_period_date + timedelta(days=7)  # Assuming a 28-day menstrual cycle
+                end_period = last_period_date + timedelta(days=7)
                 print(
                     f"Hi dear, your safe period starts on: {start_period.strftime('%Y-%m-%d')} and ends on {end_period.strftime('%Y-%m-%d')}")
                 self.welcome_page()

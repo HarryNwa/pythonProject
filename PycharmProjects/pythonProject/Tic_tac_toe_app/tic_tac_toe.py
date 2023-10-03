@@ -1,5 +1,4 @@
 from tic_tac_toe_assistance import draw_board, check_turn, check_for_win
-import os
 
 cells = {1 : "1", 2 : "2", 3 : "3", 4 : "4", 5 : "5",
          6 : "6", 7 : "7", 8 : "8", 9 : "9"}
@@ -11,7 +10,6 @@ previous = -1
 
 while play:
 
-    # os.system("cls" if os.name == "nt" else "clear")
     draw_board(cells)
     if previous == turn:
         print("Invalid cell chosen, please pick another one.")
@@ -28,7 +26,6 @@ while play:
     if check_for_win(cells): play, finish = False, True
     if turn > 8: play = False
 
-# os.system("cls" if os.name == "nt" else "clear")
 draw_board(cells)
 
 if finish:

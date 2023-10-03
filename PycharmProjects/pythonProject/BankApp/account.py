@@ -22,7 +22,10 @@ class Account:
     def get_account(self) -> str:
         return self.__account + " " + self.__account_name + " " + self.__pin
 
-    def withdraw(self, amount: int, pin:str):
+    def get_account_name(self) -> str:
+        return self.__account_name
+
+    def withdrawer(self, amount: int, pin:str):
         try:
             if self.__pin == pin:
                 if amount > 0:
@@ -35,7 +38,7 @@ class Account:
         except (ValueError, KeyboardInterrupt):
             print("Insufficient fund")
 
-    def check_balance(self, pin):
+    def check_balance_(self, pin):
         if self.__pin == pin:
             return self.__balance
         else:

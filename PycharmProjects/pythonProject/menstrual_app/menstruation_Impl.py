@@ -14,14 +14,14 @@ class MenstruationRepositoryImpl:
         return check_period
 
     def find_safe_period_end(self, check_date):
-        check_end = check_date + timedelta(days=4)
+        check_end = check_date + timedelta(days=8)
         return check_end
 
     def check_ovulation(self, cycle_length):
         if cycle_length.total_seconds() < 0:
             raise ValueError("Date does not align")
         else:
-            check_ovulation = cycle_length + timedelta(days=11)
+            check_ovulation = cycle_length + timedelta(days=14)
             return check_ovulation
 
     def find_start_flow(self, check_flow):
