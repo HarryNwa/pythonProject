@@ -44,5 +44,9 @@ class Bank:
     def check_balance(self, account, pin):
         return self.find_account(account).check_balance(pin)
 
+    def get_balance(self, account_number, pin):
+        return self.balance
+
+
 # p1 = Bank("a")
 # print(p1.generate_account_number())

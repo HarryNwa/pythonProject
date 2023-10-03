@@ -2,11 +2,18 @@ import tkinter as tk
 from tkinter import simpledialog, messagebox
 from datetime import datetime
 
+# from Diary_App.Diaries import Diaries
+
+
 class DiaryApp:
+    # diaries = Diaries
     def __init__(self, root):
+        # self.username = None
         self.root = root
         self.root.title("Buddy Diary")
         self.current_user = None
+        self.title = ""
+        self.body = ""
         self.diary = Diaries()
         self.create_widgets()
 
@@ -64,10 +71,10 @@ class DiaryApp:
         self.create_account_button.config(state=tk.DISABLED)
         self.exit_button.config(text="Logout", command=self.logout)
 
-        self.lock_button = tk.Button(self.root, text="Lock Diary", command=self.lock_diary)
+        self.lock_button = tk.Button(self.root, text="Lock Diary", command=self.lock_diary, state=tk.DISABLED)
         self.lock_button.pack(pady=5)
 
-        self.unlock_button = tk.Button(self.root, text="Unlock Diary", command=self.unlock_diary, state=tk.DISABLED)
+        self.unlock_button = tk.Button(self.root, text="Unlock Diary", command=self.unlock_diary, state=tk.NORMAL)
         self.unlock_button.pack(pady=5)
 
         self.create_entry_button = tk.Button(self.root, text="Create Entry", command=self.create_entry, state=tk.DISABLED)
@@ -91,8 +98,8 @@ class DiaryApp:
         if self.diary.lock_diary(self.current_user):
             self.lock_button.config(state=tk.DISABLED)
             self.unlock_button.config(state=tk.NORMAL)
-            self.create_entry_button.config(state=tk.NORMAL)
-            self.view_entries_button.config(state=tk.NORMAL)
+            self.create_entry_button.config(state=tk.DISABLED)
+            self.view_entries_button.config(state=tk.DISABLED)
             messagebox.showinfo("Success", "Diary locked successfully!")
         else:
             messagebox.showinfo("Error", "Diary is already locked!")
@@ -102,9 +109,13 @@ class DiaryApp:
         if password:
             if self.diary.unlock_diary(self.current_user, password):
                 self.lock_button.config(state=tk.NORMAL)
-                self.unlock_button.config(state=tk.DISABLED)
-                self.create_entry_button.config(state=tk.DISABLED)
-                self.view_entries_button.config(state=tk.DISABLED)
+                self.unlock_button.config(state=tk.NORMAL)
+                self.create_entry_button.config(state=tk.NORMAL)
+                self.view_entries_button.config(state=tk.NORMAL)
+
+                # self.unlock_button.config(state=tk.DISABLED)
+                # self.create_entry_button.config(state=tk.DISABLED)
+                # self.view_entries_button.config(state=tk.DISABLED)
                 messagebox.showinfo("Success", "Diary unlocked successfully!")
             else:
                 messagebox.showinfo("Error", "Invalid password.")
@@ -114,7 +125,9 @@ class DiaryApp:
         body = simpledialog.askstring("Create Entry", "Enter the body:")
 
         if title and body:
-            if self.diary.create_entry(self.current_user, title, body):
+            # self.diary.find_by_user_name(self.username).create_entry(self.title, self.body)
+
+            if self.diary.find_by_user_name(self.current_user).create_entry(self.current_user, title, body):
                 messagebox.showinfo("Success", "Entry created successfully!")
             else:
                 messagebox.showinfo("Error", "Failed to create entry.")
@@ -133,6 +146,8 @@ class DiaryApp:
 
 class Diaries:
     def __init__(self):
+        self.diary = None
+        self.diaries = []
         self.users = {}
         self.locked_diaries = {}
 
@@ -168,6 +183,12 @@ class Diaries:
 
     def get_entries(self, username):
         return self.users.get(username, [])
+
+    def find_by_user_name(self, username):
+        for self.diary in self.diaries:
+            if self.diary.get_username() == username:
+                return self.diary
+            raise ValueError("Username not found")
 
 
 if __name__ == "__main__":
