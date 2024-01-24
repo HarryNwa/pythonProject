@@ -5,6 +5,8 @@ from BankApp.bank import Bank
 class ATMMachine:
 
     def __init__(self):
+        self.password = ""
+        self.username = ""
         self.Tranxactrust = ""
         self.userInput = 0
         self.firstName = ""
@@ -17,31 +19,72 @@ class ATMMachine:
         self.bank1 = Account("Account number", "User", "pin")
 
     def main(self):
+        self.welcome_menu()
+        self.main_menu()
+
+
+    def welcome_menu(self):
+
+        self.userInput = int(input("""
+            HELLO! WELCOME TRANXACTRUST
+
+            1. Create a free account
+            2. Log in
+            3. Exit
+        """))
+        if self.userInput == 1:
+            self.open_account()
+        elif self.userInput == 2:
+            self.login()
+        elif self.userInput == 3:
+            self.exit_account()
+        else:
+            exit(0)
+
+    def exit_account(self):
+        exit_option = input("Click yes to log out or no to return to Diary menu: ")
+        if exit_option.lower() == 'yes':
+            print(":( Buddy Diary is closing>>>>\nGoodbye!")
+            exit(0)
+        elif exit_option.lower() == 'no':
+            self.welcome_menu()
+        else:
+            self.exit_account()
+
+    def login(self):
+        try:
+            user_login = input("Enter username: ")
+            user_password = input("Enter password: ")
+
+            if self.username != user_login:
+                print("Username does not exist")
+                if self.password != user_password:
+                    print("Invalid password")
+        except Exception as error:
+            print(error)
+            self.welcome_menu()
         self.main_menu()
 
     def main_menu(self):
         self.userInput = int(input(
             """Welcome to Tranxactrust!
             Press:
-            1 -> Open new account
-            2 -> Deposit
-            3 -> Withdraw
-            4 -> Transfer
-            5 -> Check balance
-            6 -> Logout
+            1 -> Deposit
+            2 -> Withdraw
+            3 -> Transfer
+            4 -> Check balance
+            5 -> Logout
             """))
 
         if self.userInput == 1:
-            self.open_account()
-        elif self.userInput == 2:
             self.deposit()
-        elif self.userInput == 3:
+        elif self.userInput == 2:
             self.withdraw()
-        elif self.userInput == 4:
+        elif self.userInput == 3:
             self.transfer()
-        elif self.userInput == 5:
+        elif self.userInput == 4:
             self.check_balance()
-        elif self.userInput == 6:
+        elif self.userInput == 5:
             self.logout()
 
     def check_balance(self):
@@ -129,16 +172,18 @@ class ATMMachine:
 
     def logout(self):
         try:
-            logout_option = input("Click yes to log out or no to return to app menu")
-            if logout_option.capitalize() == "yes":
-                self.main_menu()
-            if logout_option.capitalize() == "no":
+            logout_option = input("Click yes to log out or no to return to Diary menu: ")
+            if logout_option.lower() == 'yes':
+                self.welcome_menu()
+            elif logout_option.lower() == 'no':
+                self.welcome_menu()
+            else:
                 exit(0)
 
             raise ValueError
         except (ValueError, KeyboardInterrupt):
-            self.main_menu()
-
+            print("Invalid details detected")
+            self.logout()
 
 if __name__ == "__main__":
     machine = ATMMachine()
